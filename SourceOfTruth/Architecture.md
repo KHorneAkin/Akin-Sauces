@@ -1,24 +1,25 @@
 # Akin' Sauces & Seasonings — Website Architecture (Source of Truth)
 
-Status: DRAFT — pending client asset delivery + second-agent audit
+Status: AUDITED 2026-07-20 — build-ready; pending client asset delivery (see §8)
 Last updated: 2026-07-20
 
 ## 1. Client & Project Summary
 
 - **Business name:** Akin' Sauces & Seasonings (spelled **AKIN**, pronounced "Achin'")
-- **Owner:** Carl Horne
+- **Owner:** Karl Horne (spelled **K-a-r-l H-o-r-n-e** — confirmed by Nell 2026-07-20; earlier draft had "Carl")
 - **Business:** Hot sauces and seasonings, ~30 flavors
-- **Deliverables:** 1) Marketing/e-commerce-ready website, 2) QR code for truck/car decal, business cards, and flyers, linking to the site
-- **Developer engagement:** Flat $200 for developer's build hours. Hosting/domain/email are separate recurring costs billed to the client, itemized so there's no confusion between "pay Carl once" and "pay the infrastructure providers monthly/annually."
+- **Deliverables:** 1) Marketing/e-commerce-ready website, 2) Flyer design(s) for the business, 3) QR code for truck/car decal, business cards, and flyers, linking to the site
+- **Developer engagement:** Flat $200 for developer's build hours. Hosting/domain/email are separate recurring costs billed to the client, itemized so there's no confusion between "pay once for the build" and "pay the infrastructure providers monthly/annually."
 - **Timeline:** No hard deadline / event tie-in given. Client wants it done quickly. Treat as flexible-but-fast.
 - **Primary goal:** Promote the business and showcase the brand. Not currently scoped as a full storefront (see §5 Ordering).
 
 ## 2. Brand
 
 - **Logo:** Client has one and it's strong — reuse as-is. Not yet in hand; must be requested/collected before build.
-- **Colors:** Black-dominant palette with gold-ish accent/trim.
+- **Colors:** Majority black with gold accents/trim, plus occasional **red accents** leaning into the "fire/heat" sauce theme. Black stays dominant — gold is the primary accent, red is used sparingly.
 - **Photography:** Client's existing product photos are AI-generated — **do not use them.** Developer is hand-drawing replacement art. Real photography of actual product is a future to-do (flag to client).
 - **Voice/content:** Business card copy example: "Check out our flavors" + flavor list + "text or email to learn more." Tone is casual/fun (flavor names lean playful/edgy — see §4).
+- **Design/UX direction:** The site should look and feel more modern and professional than the average small sauce-business site. Interactive touches are wanted (e.g., hover/scroll animations, an engaging catalog), but nothing that slows the build or the page — the guiding priorities are quick to build, cheap to run, efficient, and straight to the point. Interactivity serves polish, not complexity.
 
 ## 3. Site Map (v1)
 
@@ -28,7 +29,7 @@ No auth, no accounts, no user sign-in/sign-up — pure marketing + catalog site.
    - Hero (logo, brand statement)
    - Sauce preview section (spotlight a few flavors / "new flavors")
    - About the business (roots/story)
-   - About the owner (Carl Horne)
+   - About the owner (Karl Horne)
    - CTA into the full catalog
 2. **Sauces / Catalog**
    - Full flavor catalog (target ~30 flavors; 7 known so far, see §4)
@@ -71,6 +72,10 @@ Model these as simple content records now (name + slug), with description/heat-l
   - Frontend: static/SSG (e.g., Next.js static export or Astro) — cheapest to host, fastest to build
   - Backend: only if needed for the contact form + (later) Stripe webhook handling — a small lightweight API service on Railway, or serverless functions if the frontend framework supports them natively (avoids running a second always-on service just for a contact form)
   - Database: not needed for v1 (flavor catalog can be static content/JSON or a lightweight CMS). Only introduce Supabase/Postgres if/when the flavor catalog needs to be editable by the client without a code deploy, or once Stripe/orders go live.
+- **Account/billing ownership (important — no middleman):** Every recurring service (Railway, domain registrar, email hosting, and eventually Stripe) must be created under **the client's own email** so invoices and billing go directly to Karl, not to the developer. This is a deliberate lesson from a past project. Sequence:
+  1. Interim: accounts may temporarily use Karl's personal Gmail (`kh854600@gmail.com`) if needed to unblock the build.
+  2. Once the business email exists (see above), migrate/transfer all service accounts and billing to it — Railway invoices included.
+  3. End state: Karl can manage and pay for everything himself with zero developer involvement.
 - **Ongoing costs to itemize for the client separately from the $200 build fee:** domain renewal (annual), hosting (Railway usage — likely near-$0 at this scale), optional email hosting, optional future maintenance retainer.
 
 ## 7. QR Code
@@ -87,7 +92,8 @@ Model these as simple content records now (name + slug), with description/heat-l
 - [ ] Domain name final pick + registration go-ahead
 - [ ] Decision: Zoho free vs Google Workspace for business email
 - [ ] Stripe account + fulfillment/shipping model (only needed to flip on v2 ordering)
-- [ ] Any brand fonts (none confirmed yet — treat as undecided, pick a clean pairing that fits black/gold if client has no preference)
+- [ ] Any brand fonts (none confirmed yet — treat as undecided, pick a clean pairing that fits black/gold/red if client has no preference)
+- [ ] Migrate all service accounts + billing (Railway, domain, email, Stripe) to the client's business email once it exists (see §6 account ownership)
 
 ## 9. Explicit Non-Goals (v1)
 
