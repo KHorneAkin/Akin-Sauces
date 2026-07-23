@@ -7,18 +7,75 @@ export type Flavor = {
   featured?: boolean;
   /** Path under /public to the exported bottle art, e.g. "/sauces/mango-habanero.png" (2048x2048 source). */
   image?: string;
+  /** Flavor-specific dietary/ingredient callout (vegan status, alcohol content, etc.). */
+  note?: string;
 };
 
-// Shared placeholder until Karl sends the full catalog — swap to a per-flavor
-// image path once each sauce has its own exported art.
+// Shared placeholder until each sauce has its own exported art — swap to a
+// per-flavor image path as photos come in.
 const PLACEHOLDER_IMAGE = "/SauceTemplate.png";
 
 export const flavors: Flavor[] = [
-  { slug: "mango-habanero", name: "Mango Habanero", featured: true, image: PLACEHOLDER_IMAGE },
-  { slug: "birdie-birdie", name: "Birdie Birdie", featured: true, image: PLACEHOLDER_IMAGE },
-  { slug: "creole-garlic", name: "Creole Garlic", image: PLACEHOLDER_IMAGE },
-  { slug: "scorp", name: "Scorp", image: PLACEHOLDER_IMAGE },
-  { slug: "old-whiskey-dick", name: "Old Whiskey Dick", featured: true, image: PLACEHOLDER_IMAGE },
-  { slug: "ginger-dragon", name: "Ginger Dragon", image: PLACEHOLDER_IMAGE },
-  { slug: "fallen-angel", name: "Fallen Angel", image: PLACEHOLDER_IMAGE },
+  {
+    slug: "mango-habanero",
+    name: "Mango Habanero",
+    featured: true,
+    image: PLACEHOLDER_IMAGE,
+    description:
+      "Probably my best seller for a reason. Most mango sauces taste like mango but mostly like hot sauce with some mango in it. This Mango Habanero is mostly mango so you get fresh sweet tangy mango up front. Then a Habanero kick on the back end. Perfect balance of sweet and heat!",
+  },
+  {
+    slug: "verdie-birdie",
+    name: "Verdie Birdie",
+    featured: true,
+    image: PLACEHOLDER_IMAGE,
+    description:
+      "A Jalapeño, green onion, and cilantro hot sauce with a touch of chicken bouillon. Tangy and delicious.  Full of flavor!",
+    note: "Contains chicken bouillon — not a vegan product.",
+  },
+  {
+    slug: "creole-garlic",
+    name: "Creole Garlic",
+    image: PLACEHOLDER_IMAGE,
+    description:
+      "A medium heat Louisiana style hot sauce made with Red Chili  peppers and, a Lot of Garlic!",
+  },
+  {
+    slug: "scorp",
+    name: "Scorp",
+    image: PLACEHOLDER_IMAGE,
+    description:
+      "A high-heat Louisiana-style sauce made with Trinidad Scorpion peppers and a touch of garlic. A tangy hot flavor that will wake up the flavor of anything you put it on!",
+  },
+  {
+    slug: "ole-whiskey-dick",
+    name: "Ole Whiskey Dick",
+    featured: true,
+    image: PLACEHOLDER_IMAGE,
+    description:
+      "A brown sugar and bourbon hot sauce made with Kentucky bourbon and Habaneros.  A deep, rich sweet-heat  sauce often used as a glaze for grilled meats or fish. But of course it can be put on anything!",
+    note: "No alcohol — it dissipates during cooking, only the whiskey flavor remains.",
+  },
+  {
+    slug: "ginger-dragon",
+    name: "Ginger Dragon",
+    image: PLACEHOLDER_IMAGE,
+    description:
+      "An Asian inspired sweet-heat sauce made with Thai chilis, soy, garlic, and ginger. A sweet-heat taste explosion!",
+  },
+  {
+    slug: "fallen-angel",
+    name: "Fallen Angel",
+    image: PLACEHOLDER_IMAGE,
+    description:
+      "An insanely hot Carolina Reaper sauce that's not for the faint of heart. Super hot but also has flavor. Contains garlic and chicken bouillon and a touch of sweetness. An adrenaline rush in your mouth!",
+    note: "Contains chicken bouillon — not a vegan product.",
+  },
+  {
+    slug: "smokey-chipotle",
+    name: "Smokey Chipotle",
+    image: PLACEHOLDER_IMAGE,
+    description:
+      "A rich red Louisiana-style sauce with Red Chili peppers and Smoked Morita peppers. Medium heat, full flavor!",
+  },
 ];

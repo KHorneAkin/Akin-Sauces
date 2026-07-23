@@ -16,6 +16,12 @@ export default function SaucesPage() {
         {`${flavors.length} flavors and counting. Add what you want to your cart, then send Karl the order.`}
       </p>
 
+      <p className="mt-6 max-w-2xl rounded-xl border border-gold/20 bg-background-raised p-4 text-sm text-foreground-muted">
+        All my sauces are All-Natural and are 2 years shelf-stable. I only use fresh peppers and
+        real ingredients. No extracts, no preservatives, no capsaicin. Sauces are bottled when
+        hot, which disinfects the bottles and prolongs shelf life. All sauces are pH tested.
+      </p>
+
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {flavors.map((flavor) => (
           <div
@@ -48,6 +54,9 @@ export default function SaucesPage() {
               <h2 className="text-lg font-semibold text-foreground">{flavor.name}</h2>
               {flavor.description && (
                 <p className="mt-1 text-sm text-foreground-muted">{flavor.description}</p>
+              )}
+              {flavor.note && (
+                <p className="mt-2 text-xs italic text-ember/80">{flavor.note}</p>
               )}
             </div>
           </div>

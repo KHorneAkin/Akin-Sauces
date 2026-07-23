@@ -107,6 +107,13 @@ export default function Home() {
       <section className="border-t border-gold/20 bg-background-raised px-6 py-16">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-2xl font-semibold text-gold-soft">Our roots</h2>
+          <p className="mt-4">
+            <span className="text-lg font-semibold text-gold-soft">akin</span>{" "}
+            <span className="text-foreground-muted">əˈkin</span>
+          </p>
+          <p className="mt-1 text-sm italic text-foreground-muted">
+            Similar, related, or having the same qualities.
+          </p>
           <p className="mt-4 text-foreground-muted">
             {`${siteConfig.businessName} started with a simple goal: build sauces people actually crave, not just tolerate. Every bottle is small-batch, made with real ingredients, and built around bold, distinct flavor — not just heat for heat's sake.`}
           </p>
