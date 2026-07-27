@@ -12,8 +12,15 @@ export default function Home() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-gold/20 bg-gradient-to-b from-background-raised to-background px-6 py-24 text-center">
         {siteConfig.heroImage && (
-          <div className="absolute inset-0 hidden sm:block">
-            <Image src={siteConfig.heroImage} alt="" fill priority className="object-cover" />
+          <div className="absolute inset-0">
+            <Image
+              src={siteConfig.heroImage}
+              alt=""
+              fill
+              priority
+              className="object-cover"
+              style={{ objectPosition: "30% center" }}
+            />
             <div className="absolute inset-0 bg-background/60" />
           </div>
         )}
