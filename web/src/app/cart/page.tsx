@@ -53,7 +53,13 @@ export default function CartPage() {
             <div className="flex items-center gap-4">
               <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-background">
                 {flavor?.image ? (
-                  <Image src={flavor.image} alt={item.name} fill className="object-contain" />
+                  <Image
+                    src={flavor.image}
+                    alt={item.name}
+                    fill
+                    sizes="56px"
+                    className="object-contain"
+                  />
                 ) : (
                   <div className="flex h-full items-center justify-center text-[9px] text-foreground-muted">
                     No photo

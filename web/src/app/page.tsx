@@ -18,6 +18,7 @@ export default function Home() {
               alt=""
               fill
               priority
+              sizes="100vw"
               className="object-cover"
               style={{ objectPosition: "30% center" }}
             />
@@ -76,7 +77,13 @@ export default function Home() {
               >
                 <div className="relative aspect-square w-full bg-background">
                   {flavor.image ? (
-                    <Image src={flavor.image} alt={flavor.name} fill className="object-contain" />
+                    <Image
+                      src={flavor.image}
+                      alt={flavor.name}
+                      fill
+                      sizes="(min-width: 640px) 33vw, 100vw"
+                      className="object-contain"
+                    />
                   ) : (
                     <div className="flex h-full items-center justify-center text-sm text-foreground-muted">
                       Photo coming soon
@@ -132,7 +139,13 @@ export default function Home() {
         <div className="mx-auto flex max-w-3xl flex-col gap-6 sm:flex-row sm:items-center">
           <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-full border border-gold/30 bg-white">
             {siteConfig.ownerPhoto && (
-              <Image src={siteConfig.ownerPhoto} alt={siteConfig.owner} fill className="object-cover" />
+              <Image
+                src={siteConfig.ownerPhoto}
+                alt={siteConfig.owner}
+                fill
+                sizes="160px"
+                className="object-cover"
+              />
             )}
           </div>
           <div>

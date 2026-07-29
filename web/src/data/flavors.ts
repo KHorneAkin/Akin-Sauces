@@ -20,7 +20,7 @@ export const flavors: Flavor[] = [
     slug: "mango-habanero",
     name: "Mango Habanero",
     featured: true,
-    image: PLACEHOLDER_IMAGE,
+    image: "/FinishedSauces/MangoHabaneroArt.png",
     description:
       "Probably my best seller for a reason. Most mango sauces taste like mango but mostly like hot sauce with some mango in it. This Mango Habanero is mostly mango so you get fresh sweet tangy mango up front. Then a Habanero kick on the back end. Perfect balance of sweet and heat!",
   },
@@ -28,7 +28,7 @@ export const flavors: Flavor[] = [
     slug: "verdie-birdie",
     name: "Verdie Birdie",
     featured: true,
-    image: PLACEHOLDER_IMAGE,
+    image: "/FinishedSauces/VerdieBirdieArt.png",
     description:
       "A Jalapeño, green onion, and cilantro hot sauce with a touch of chicken bouillon. Tangy and delicious.  Full of flavor!",
     note: "Contains chicken bouillon — not a vegan product.",
@@ -43,7 +43,7 @@ export const flavors: Flavor[] = [
   {
     slug: "scorp",
     name: "Scorp",
-    image: PLACEHOLDER_IMAGE,
+    image: "/FinishedSauces/ScorpArt.png",
     description:
       "A high-heat Louisiana-style sauce made with Trinidad Scorpion peppers and a touch of garlic. A tangy hot flavor that will wake up the flavor of anything you put it on!",
   },
@@ -51,7 +51,7 @@ export const flavors: Flavor[] = [
     slug: "ole-whiskey-dick",
     name: "Ole Whiskey Dick",
     featured: true,
-    image: PLACEHOLDER_IMAGE,
+    image: "/FinishedSauces/OleWhiskeyDickArt.png",
     description:
       "A brown sugar and bourbon hot sauce made with Kentucky bourbon and Habaneros.  A deep, rich sweet-heat  sauce often used as a glaze for grilled meats or fish. But of course it can be put on anything!",
     note: "No alcohol — it dissipates during cooking, only the whiskey flavor remains.",
