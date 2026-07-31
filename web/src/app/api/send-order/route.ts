@@ -1,11 +1,7 @@
-import { readFile } from "fs/promises";
-import path from "path";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { flavors } from "@/data/flavors";
 import { siteConfig } from "@/lib/site-config";
-
-type OrderItem = { slug: string; name: string; qty: number };
+import { buildOrderEmail, type OrderItem } from "@/lib/order-email";
 
 export async function POST(request: NextRequest) {
   const { items, customerEmail } = (await request.json()) as {
@@ -22,28 +18,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Email service not configured" }, { status: 503 });
   }
 
-  const lines = items.map((item) => `- ${item.qty}x ${item.name}`).join("\n");
-  const text = `New order from ${customerEmail}:\n\n${lines}\n\nReply to this email to follow up on payment and shipping/pickup.`;
-
-  // Dedupe by image path so flavors still sharing the placeholder art
-  // (or any other repeated file) only get attached once per order.
-  const uniqueImages = new Map<string, string>();
-  for (const item of items) {
-    const flavor = flavors.find((f) => f.slug === item.slug);
-    if (flavor?.image && !uniqueImages.has(flavor.image)) {
-      uniqueImages.set(flavor.image, item.slug);
-    }
-  }
-
-  const attachments = await Promise.all(
-    [...uniqueImages.entries()].map(async ([imagePath, slug]) => {
-      const filePath = path.join(process.cwd(), "public", imagePath);
-      const content = await readFile(filePath);
-      return { filename: `${slug}${path.extname(imagePath)}`, content };
-    })
-  );
-
   const resend = new Resend(apiKey);
+  const { html, text, attachments } = await buildOrderEmail(items, customerEmail);
 
   try {
     await resend.emails.send({
@@ -51,6 +27,7 @@ export async function POST(request: NextRequest) {
       to: siteConfig.email,
       replyTo: customerEmail,
       subject: `Order request from ${customerEmail}`,
+      html,
       text,
       attachments,
     });
