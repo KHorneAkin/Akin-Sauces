@@ -11,7 +11,9 @@ export const metadata: Metadata = {
 export default function SaucesPage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
-      <h1 className="text-3xl font-bold text-gold-soft">The full lineup</h1>
+      <h1 className="font-impact text-3xl uppercase tracking-tight text-gold-soft">
+        The full lineup
+      </h1>
       <p className="mt-2 max-w-xl text-foreground-muted">
         {`${flavors.length} flavors and counting. Add what you want to your cart, then send Karl the order.`}
       </p>

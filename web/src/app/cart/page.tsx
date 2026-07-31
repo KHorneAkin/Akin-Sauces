@@ -47,7 +47,9 @@ export default function CartPage() {
   if (sendState === "sent") {
     return (
       <div className="mx-auto max-w-2xl px-6 py-16 text-center">
-        <h1 className="text-3xl font-bold text-gold-soft">Order sent!</h1>
+        <h1 className="font-impact text-3xl uppercase tracking-tight text-gold-soft">
+          Order sent!
+        </h1>
         <p className="mt-4 text-foreground-muted">
           Karl&rsquo;s got your order and photos of everything you picked. He&rsquo;ll reply to{" "}
           {customerEmail} to sort out payment and pickup/shipping.
@@ -59,7 +61,9 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="mx-auto max-w-2xl px-6 py-16 text-center">
-        <h1 className="text-3xl font-bold text-gold-soft">Your cart is empty</h1>
+        <h1 className="font-impact text-3xl uppercase tracking-tight text-gold-soft">
+          Your cart is empty
+        </h1>
         <p className="mt-4 text-foreground-muted">
           Add a few flavors from the{" "}
           <Link href="/sauces" className="text-gold-soft hover:underline">
@@ -73,7 +77,9 @@ export default function CartPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
-      <h1 className="text-3xl font-bold text-gold-soft">Your order</h1>
+      <h1 className="font-impact text-3xl uppercase tracking-tight text-gold-soft">
+        Your order
+      </h1>
       <p className="mt-2 text-foreground-muted">
         Review your flavors, then send it to Karl — he&rsquo;ll follow up on payment and
         pickup/shipping.

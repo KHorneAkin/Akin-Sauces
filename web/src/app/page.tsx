@@ -68,7 +68,9 @@ export default function Home() {
       {/* Sauce preview */}
       <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-2xl font-semibold text-gold-soft">Fan favorites</h2>
+          <h2 className="font-impact text-2xl uppercase tracking-tight text-gold-soft">
+            Fan favorites
+          </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             {featured.map((flavor) => (
               <div
@@ -120,7 +122,9 @@ export default function Home() {
       {/* About the business */}
       <section className="border-t border-gold/20 bg-background-raised px-6 py-16">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-2xl font-semibold text-gold-soft">Our roots</h2>
+          <h2 className="font-impact text-2xl uppercase tracking-tight text-gold-soft">
+            Our roots
+          </h2>
           <p className="mt-4">
             <span className="text-lg font-semibold text-gold-soft">akin</span>{" "}
             <span className="text-foreground-muted">əˈkin</span>
@@ -149,7 +153,9 @@ export default function Home() {
             )}
           </div>
           <div>
-            <h2 className="text-2xl font-semibold text-gold-soft">Meet {siteConfig.owner}</h2>
+            <h2 className="font-impact text-2xl uppercase tracking-tight text-gold-soft">
+              Meet {siteConfig.owner}
+            </h2>
             <p className="mt-4 text-foreground-muted">
               {`${siteConfig.owner} is the hands behind every bottle — from the recipe to the label. What started as a personal obsession with getting flavor right has grown into ${siteConfig.businessName}, one batch at a time.`}
             </p>
