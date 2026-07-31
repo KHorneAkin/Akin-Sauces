@@ -59,7 +59,7 @@ export const flavors: Flavor[] = [
   {
     slug: "ginger-dragon",
     name: "Ginger Dragon",
-    image: PLACEHOLDER_IMAGE,
+    image: "/FinishedSauces/GingerDragonArt.png",
     description:
       "An Asian inspired sweet-heat sauce made with Thai chilis, soy, garlic, and ginger. A sweet-heat taste explosion!",
   },

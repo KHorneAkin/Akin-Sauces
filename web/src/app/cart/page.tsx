@@ -1,13 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { flavors } from "@/data/flavors";
 import { useCart } from "@/lib/cart-context";
 import { siteConfig } from "@/lib/site-config";
 
+type SendState = "idle" | "sending" | "sent" | "error";
+
 export default function CartPage() {
   const { items, updateQty, removeItem, clear } = useCart();
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [sendState, setSendState] = useState<SendState>("idle");
 
   const buildMailto = () => {
     const lines = items.map((i) => `- ${i.qty}x ${i.name}`).join("\n");
@@ -18,6 +23,38 @@ export default function CartPage() {
     );
     return `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
   };
+
+  const sendOrder = async () => {
+    if (!customerEmail) return;
+    setSendState("sending");
+    try {
+      const res = await fetch("/api/send-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items, customerEmail }),
+      });
+      if (!res.ok) throw new Error("Send failed");
+      setSendState("sent");
+      clear();
+    } catch {
+      // Email service unavailable/misconfigured — fall back to the
+      // customer's own email client so the order still goes through.
+      setSendState("error");
+      window.location.href = buildMailto();
+    }
+  };
+
+  if (sendState === "sent") {
+    return (
+      <div className="mx-auto max-w-2xl px-6 py-16 text-center">
+        <h1 className="text-3xl font-bold text-gold-soft">Order sent!</h1>
+        <p className="mt-4 text-foreground-muted">
+          Karl&rsquo;s got your order and photos of everything you picked. He&rsquo;ll reply to{" "}
+          {customerEmail} to sort out payment and pickup/shipping.
+        </p>
+      </div>
+    );
+  }
 
   if (items.length === 0) {
     return (
@@ -99,13 +136,37 @@ export default function CartPage() {
         })}
       </ul>
 
-      <div className="mt-8 flex flex-wrap gap-4">
-        <a
-          href={buildMailto()}
-          className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-background transition-colors hover:bg-gold-soft"
+      <div className="mt-8 max-w-sm">
+        <label htmlFor="customerEmail" className="text-sm text-foreground-muted">
+          Your email (so Karl can reply about payment/pickup)
+        </label>
+        <input
+          id="customerEmail"
+          type="email"
+          required
+          value={customerEmail}
+          onChange={(e) => setCustomerEmail(e.target.value)}
+          placeholder="you@example.com"
+          className="mt-2 w-full rounded-lg border border-gold/40 bg-background-raised px-4 py-2 text-foreground outline-none focus:border-gold"
+        />
+      </div>
+
+      {sendState === "error" && (
+        <p className="mt-3 text-sm text-ember">
+          Couldn&rsquo;t send that automatically, so we&rsquo;ve opened your email app instead —
+          just hit send there.
+        </p>
+      )}
+
+      <div className="mt-4 flex flex-wrap gap-4">
+        <button
+          type="button"
+          onClick={sendOrder}
+          disabled={!customerEmail || sendState === "sending"}
+          className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-background transition-colors hover:bg-gold-soft disabled:opacity-50"
         >
-          Send order to Karl
-        </a>
+          {sendState === "sending" ? "Sending…" : "Send order to Karl"}
+        </button>
         <button
           type="button"
           onClick={clear}

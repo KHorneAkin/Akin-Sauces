@@ -4,6 +4,8 @@ export const siteConfig = {
   phone: "(904) 447-0906",
   phoneHref: "+19044470906",
   email: "akinsauces@gmail.com",
+  /** Sending address for order emails — must be on the verified Resend domain, not the Gmail inbox above. */
+  orderFromEmail: "orders@akinsauces.com",
   tagline: "Small-batch heat, big-time flavor.",
   /** Shown under the logo mark in the hero, since the mark itself only reads "akin". */
   subBrand: "Sauces & Seasonings",
