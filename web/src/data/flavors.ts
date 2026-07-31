@@ -11,10 +11,6 @@ export type Flavor = {
   note?: string;
 };
 
-// Shared placeholder until each sauce has its own exported art — swap to a
-// per-flavor image path as photos come in.
-const PLACEHOLDER_IMAGE = "/SauceTemplate.png";
-
 export const flavors: Flavor[] = [
   {
     slug: "mango-habanero",
@@ -36,7 +32,7 @@ export const flavors: Flavor[] = [
   {
     slug: "creole-garlic",
     name: "Creole Garlic",
-    image: PLACEHOLDER_IMAGE,
+    image: "/FinishedSauces/CreoleGarlicArt.png",
     description:
       "A medium heat Louisiana style hot sauce made with Red Chili  peppers and, a Lot of Garlic!",
   },
@@ -66,7 +62,7 @@ export const flavors: Flavor[] = [
   {
     slug: "fallen-angel",
     name: "Fallen Angel",
-    image: PLACEHOLDER_IMAGE,
+    image: "/FinishedSauces/FallenAngelArt.png",
     description:
       "An insanely hot Carolina Reaper sauce that's not for the faint of heart. Super hot but also has flavor. Contains garlic and chicken bouillon and a touch of sweetness. An adrenaline rush in your mouth!",
     note: "Contains chicken bouillon — not a vegan product.",
@@ -74,7 +70,7 @@ export const flavors: Flavor[] = [
   {
     slug: "smokey-chipotle",
     name: "Smokey Chipotle",
-    image: PLACEHOLDER_IMAGE,
+    image: "/FinishedSauces/SmokeyChipotleArt.png",
     description:
       "A rich red Louisiana-style sauce with Red Chili peppers and Smoked Morita peppers. Medium heat, full flavor!",
   },
