@@ -1,8 +1,8 @@
 export const siteConfig = {
   businessName: "Akin' Sauces & Seasonings",
   owner: "Karl Horne",
-  phone: "(904) 447-0906",
-  phoneHref: "+19044470906",
+  phone: "(904) 470-0906",
+  phoneHref: "+19044700906",
   email: "akinsauces@gmail.com",
   /** Sending address for order emails — must be on the verified Resend domain, not the Gmail inbox above. */
   orderFromEmail: "orders@akinsauces.com",
