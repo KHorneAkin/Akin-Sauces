@@ -25,6 +25,12 @@ export const siteConfig = {
 };
 
 /**
+ * Seasonal falling-snow overlay. Flip to false once the holidays are over
+ * (the overlay also switches itself off after Jan 6 as a safety net).
+ */
+export const HOLIDAY_THEME_ENABLED = true;
+
+/**
  * v2 real checkout (cart + Stripe) is built behind this flag per the
  * source-of-truth doc — flip on once Stripe keys + fulfillment model exist.
  */
